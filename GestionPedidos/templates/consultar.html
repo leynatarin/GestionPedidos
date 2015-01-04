@@ -1,0 +1,34 @@
+{% extends "base_site.html" %}
+{% load staticfiles %}
+
+{% block content_title %}
+	{% include 'content_title.html' %}
+{% endblock %}
+
+{% block content %}
+<section>
+    {% if form.errors %}
+        <p>{{ form.errors }}</p>
+    {% endif %}
+
+    <form method="post" action="{% url 'registro' %}">
+        {% csrf_token %}
+            <tr>
+                <td>{{ form.username }}</td>
+            </tr>
+            <tr>
+                <td>{{ form.first_name }}</td>
+            </tr>
+            <tr>
+                <td>{{ form.last_name }}</td>
+            </tr>
+              <tr>
+                <td>{{ form.email }}</td>
+            </tr>
+               <tr>
+                <td>{{ form.telefono }}</td>
+            </tr>
+        <input type="submit" value="login"/>
+    </form>
+</section>
+{% endblock %}

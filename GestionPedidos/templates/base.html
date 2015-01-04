@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<title>{% block html_title %}{% endblock %}</title>
+		{% block styles %}{% endblock %}
+	</head>
+	<body>
+		<div class="container-fluid">
+			<div class="row-fluid">
+				<div class="span12">
+					{% block app_menu %}{% endblock %}
+					<div id='todo'>
+						{% block content_title %}{% endblock %}
+						{% block content_slider %}{% endblock %}
+						{% block content %}{% endblock %}
+					</div>
+				</div>
+			</div>
+		</div>
+		<footer>{% block html_footer %}{% endblock %}</footer>
+
+		{% block javascripts %}{% endblock %}
+	</body>
+</html>

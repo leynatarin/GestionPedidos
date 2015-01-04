@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block title %} {{ title }} | Maria Juana {% endblock %}
+
+{% block styles  %}
+<!-- meta charset="UTF-8" -->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="{% static 'css/bootstrap/bootstrap.cyborg.css' %}" media="screen"/>
+<link rel="stylesheet" href="{% static 'css/bootstrap/bootstrap-responsive.min.css' %}"/>
+<link rel="stylesheet" href="{% static 'css/style.app.css' %}">
+<link rel="stylesheet" href="{% static 'css/diagramacion1.css' %}">
+<link rel="stylesheet" href="{% static 'css/carrito.css' %}">
+<link rel="stylesheet" href="{% static 'css/servicios.css' %}">
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+<link rel="stylesheet" href="{% static 'css/notificacion.css' %}">
+
+<link rel="shortcut icon" href="{% static 'images/favicon.png' %}" />
+<meta charset="UTF-8"/>
+{% endblock %}
+
+{% block app_menu %}
+<!-- Barra superior fija con opciones principales de menú -->
+<div class="navbar navbar navbar-fixed-top">
+	<div class="navbar-inner">
+	<a href="home"></a>
+		<div class="container-fluid">
+			<button class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> 
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span> 
+								</button> 
+			<a class="brand" href="{% url 'inicio' %}"><i class="icon-home icon-white"></i> Inicio </a>
+			<div class="nav-collapse collapse">
+				<ul class="nav">
+					<li class="divider-vertical"></li>
+					<li class="dropdown">
+						<a href="{% url 'menu' %}">
+						<i class="icon-list-alt icon-white"></i> Nuestro Men&uacute; </a>
+					</li>
+					<li class="dropdown">
+						<a href="{% url 'servicios' %}">
+						<i class="icon-lock icon-white"></i> Servicios </a>
+					</li>
+					{% if user.is_authenticated %}
+						<li class="dropdown">
+							<a href="{% url 'carritoCompra' %}">
+							<i class="icon-shopping-cart icon-white"></i> Ver carrito de compra </a>
+						</li>
+						<li class="dropdown">
+							<a href="{% url 'editarPerfil' %}">
+							<i class="icon-user icon-white"></i> Mi Perfil </a>
+						</li>
+						{% if user.is_staff %}
+						<li class="dropdown">
+							<a href="{% url 'listaPedidos' %}">
+							<i class="icon-shopping-cart icon-white"></i> Lista de Pedidos </a>
+						</li>
+						{% endif %}
+						<li class="dropdown">
+							<a href="{% url 'logout' %}">
+							<i class="icon-off icon-white"></i> Cerrar Sesi&oacute;n </a>
+						</li>
+					{% else %}
+					<li class="dropdown">
+						<a href="{% url 'login' %}">
+						<i class="icon-info-sign icon-white"></i> Iniciar Sesi&oacute;n </a>
+					</li>
+					<li class="dropdown">
+						<a href="{% url 'registro' %}">
+						<i class="icon-user icon-white"></i> Registro </a>
+					</li>
+					{% endif %}
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+<script type="text/javascript" src="{% static 'js/jquery/jquery.1.8.3.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/bootstrap/bootstrap.min.js' %}"></script>
+<script type="text/javascript">
+	$('.carousel').carousel({
+	  interval: 2000
+	});
+</script>
+{% endblock %}

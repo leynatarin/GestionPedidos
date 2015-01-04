@@ -1,0 +1,39 @@
+{% extends "base_site.html" %}
+{% load staticfiles %}
+
+{% block content_title %}
+	{% include 'content_title.html' %}
+{% endblock %}
+
+{% block content %}
+<section>
+    {% if userForm.errors or perfilForm.errors %}
+        <p>{{ userForm.errors }}</p>
+        <p>{{ perfilForm.errors }}</p>
+    {% endif %}
+
+    <form method="post" action="{% url 'editarPerfil' %}">
+        {% csrf_token %}
+            <tr>
+                <td>{{ userForm.first_name }}</td>
+            </tr>
+            <tr>
+                <td>{{ userForm.last_name }}</td>
+            </tr>
+            <tr>
+                <td>{{ userForm.email }}</td>
+            </tr>
+            <tr>
+                <td>{{ perfilForm.telefono }}</td>
+            </tr>
+            <tr>
+                <td>{{ perfilForm.direccion }}</td>
+            </tr>
+            <tr>
+                <td>{{ perfilForm.barrio }}</td>
+            </tr>
+
+        <input type="submit" value="Enviar"/>
+    </form>
+</section>
+{% endblock %}

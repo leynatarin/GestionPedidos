@@ -1,0 +1,52 @@
+{% extends "base_site.html" %}
+{% load staticfiles %}
+
+{% block content_title %}
+	{% include 'content_title.html' %}
+{% endblock %}
+
+{% block content %}
+<section>
+    {% if form.errors %}
+        <p>Tu nombre de usuario y contraseña no son correctas. Por favor intente de nuevo.</p>
+    {% endif %} 
+
+
+<div class="container-fluid">
+    <div class="row-fluid">
+
+        <div class="offset3 span6">
+
+            <fieldset class="">      
+                    
+                     <legend><center><h3>Login</h3></center></legend> 
+                        <form method="post" action="{% url 'django.contrib.auth.views.login' %}" class="form-horizontal">
+        {% csrf_token %}
+
+         <div class="control-group">
+                                 <label class="control-label" for="nombre">Nombre de usuario:</label>
+                                    <div class="controls">
+                                         {{ form.username }}
+                                    </div>
+        </div>
+
+        <div class="control-group">
+                                 <label class="control-label" for="contraseña">Contraseña:</label>
+                                    <div class="controls">
+                                          {{ form.password }}
+                                    </div>
+        </div>       
+    
+         <div class="text-center" >
+                 <input type="submit" class="btn btn-danger"  value="Login"/>
+
+                 <input type="hidden" name="next" value="/menu/"/>
+                </div>
+             </form>
+        </fieldset>
+     </div>
+    </div>       
+</div>
+ 
+</section>
+{% endblock %}

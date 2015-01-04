@@ -1,0 +1,28 @@
+{% extends "base_site.html" %}
+{% load staticfiles %}
+
+{% block content_title %}
+	{% include 'content_title.html' %}
+{% endblock %}
+
+{% block content_slider %}
+	{% include 'content_slider.html' %}
+{% endblock %}
+
+{% block content %}
+<section>
+	{% for categoria in categorias_list %}
+		{% if forloop.counter0|divisibleby:4 %}
+			<div class="row-fluid">
+		{% endif %}
+
+		<div class="span3 contenedor" id="{{ categoria.enlaceHtml }}">
+		<img class="icon" src="{{ categoria.imagen.url }}">
+		<p class="texto"><a href="/{{ categoria.enlaceHtml }}">{{ categoria.nombre }}</a></p>
+		</div>
+		{% if forloop.counter|divisibleby:4 %}
+			</div>
+	  	{% endif %}
+	{% endfor %}
+</section>
+{% endblock %}

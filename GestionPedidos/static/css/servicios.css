@@ -1,0 +1,84 @@
+
+
+
+#contenservicios{
+padding: 1em;
+background-color: #800000;
+ width: 1230px;
+ height :800px;
+}
+
+#eventos {
+
+
+padding: 1em;
+background-color: #800000;
+float: left;
+}
+
+ #event {
+
+padding: 1em;
+background-color: #800000;
+ box-shadow: 20px 20px bd;
+float: left;
+}
+
+#cumpleanos {
+
+
+padding: 1em;
+background-color: #800000;
+
+margin-top: .5em;
+  margin-bottom: .5em;
+  margin-left: 1em;
+  margin-right: .5em;
+  float: left;
+ 
+
+}
+#reunionE {
+
+padding: 1em;
+background-color: #800000;
+margin-top: .5em;
+  margin-bottom: .5em;
+  margin-left: 1em;
+  margin-right: .5em;
+  float: left;
+
+
+}
+
+#texto {
+   font-family: serif; 
+  padding: 2em;
+  background: #8B0000;
+  height: 600px;
+  width: 22%;
+  text-align: center;
+  font-size: 150%;
+  color: #FFA500;
+ 
+  border-radius: 15px 0px 15px 0px;
+  box-shadow: 3px 8px 40px #000000;
+  position: absolute;
+  top: 270px;
+  right: 120px;
+
+}
+
+h4{
+	 font-family: serif; 
+   text-align: center;
+	color: #FFFFFF;
+    font-size: 90%; 
+    padding: 0em;
+ 
+}
+
+
+
+
+

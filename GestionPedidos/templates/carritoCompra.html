@@ -1,0 +1,48 @@
+{% extends "base_site.html" %}
+{% load staticfiles %}
+
+{% block content_title %}
+	{% include 'content_title.html' %}
+{% endblock %}
+
+{% block content_slider %}
+	{% include 'content_slider.html' %}
+{% endblock %}
+
+{% block content %}
+<section>
+	<div id="titulo">
+		<h1 id="header">CARRITO DE COMPRAS <img src="{% static 'images/logo.jpg' %}" width="70" height="60" alt="logo"/></h1></br>
+		<div class="row">
+			<div class="offset2 span8">
+				<table class="table table-condensed table-bordered">
+					<thead>
+						<tr>
+							<th><center>Cantidad</center></th>
+							<th><center>Item</center></th>
+							<th><center>Precio</center></th>
+							<th><center>Subtotal</center></th>
+							<th><center>Eliminar</center></th>
+						</tr>
+					</thead>
+					<tbody>
+					{% for key, value in carrito.items %}
+						<tr>
+							<td><center><input type="number" value="{{ value.0 }}" min="1" class="qty"/></center></td>
+							<td>{{ value.1 }}</td>
+							<td>{{ value.2 }}</td>
+							<td>{{ value.3 }}</td>
+							<td><center><button type="button" class="btn btn-danger btn-mini"><i class="icon-remove icon-white"></i> </button></center></td>
+						</tr>
+					{% endfor %}
+						<tr>
+							<td colspan="5">T O T A L: {{ total }}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		</br>
+		<center><a class="btn btn-danger" href="{% url 'ordenCompra' %}">Pedir<i class="icon-shopping-cart icon-white"></i></a></center>
+</section>
+{% endblock %}

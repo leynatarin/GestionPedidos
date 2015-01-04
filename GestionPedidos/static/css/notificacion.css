@@ -1,0 +1,36 @@
+
+
+tr,td { 
+  background: #DCDCDC; 
+   color: maroon; 
+    border: 3px;
+    width: 60px;
+    
+}
+th { 
+  background: #FAF0E6; 
+  color: maroon; 
+}
+
+h1#titul{ 
+  text-align: center;
+  color: #FFA500;
+ 
+}
+
+#fondo{
+
+  background-color: #800000;
+}
+
+#myform {
+    text-align: center;
+    padding: 0px;
+    border: 0px dotted #ccc;
+    margin: 1%;
+}
+.qty {
+    width: 15%;
+    height: 25px;
+    text-align: center;
+}

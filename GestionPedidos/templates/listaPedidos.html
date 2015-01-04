@@ -1,0 +1,54 @@
+{% extends "base_site.html" %}
+{% load staticfiles %}
+
+{% block content_title %}
+	{% include 'content_title.html' %}
+{% endblock %}
+
+{% block content %}
+<div id="fondo">
+	</br>
+	<center><h1 id="titul">Lista de pedidos</h1></center>
+	</br></br>
+
+	<div class="row">
+		<div class="offset2 span8">
+			<table class="table table-condensed table-bordered">
+				<thead>
+					<tr>
+						<th><center>ID</center></th>
+						<th><center>Fecha</center></th>
+						<th><center>Nombre del cliente</center></th>
+				
+						<th><center>Confirmado</center></th>
+						<th><center>Enviado</center></th>
+					</tr>
+				</thead>
+
+				<tbody>
+					{% for pedido in ordenes %}
+					<tr>
+						<td><center><a href="{% url 'detallePedido' pedido.id %}"> {{ pedido.id }} </a></center> </td>
+						<td>{{ pedido.fecha }}</td>
+						<td><center>{{ pedido.usuario.username }}</center></td>
+						
+						<td>
+							<center>
+								<button type="button" class="btn btn-success btn-mini"><i class="icon-ok icon-white"></i> </button>
+								<button type="button" class="btn btn-danger btn-mini"><i class="icon-remove icon-white"></i> </button>
+							</center>
+						</td>
+						<td>
+							<center>
+								<button type="button" class="btn btn-success btn-mini"><i class="icon-ok icon-white"></i> </button>
+								<button type="button" class="btn btn-danger btn-mini"><i class="icon-remove icon-white"></i> </button>
+							</center>
+						</td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+{% endblock %}

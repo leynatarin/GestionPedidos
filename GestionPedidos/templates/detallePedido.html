@@ -1,0 +1,63 @@
+{% extends "base_site.html" %}
+{% load staticfiles %}
+
+{% block content_title %}
+	{% include 'content_title.html' %}
+{% endblock %}
+
+{% block content %}
+<div id="fondo">
+	</br>
+	<center><h1 id="titul">Historial de Compra</h1></center>
+	</br></br>
+
+	<div class="row">
+		<div class="offset2 span8">
+			<table class="table table-condensed table-bordered">
+				<tr>
+					<td>Nombre del cliente:  {{ ordenCompra.usuario.username }}</td>
+				</tr>
+				<tr>
+					<td>Telefono:</td>
+				</tr>
+
+				<tr>
+					<td>Correo electronico:  {{ ordenCompra.usuario.email }}</td>
+				</tr>
+
+				<tr>
+					<td>Direccion de pedido:</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+
+	</br>
+	<center><h1 id="titul">Productos</h2></center>
+	<div class="row">
+		<div class="offset2 span8">
+			<table class="table table-condensed table-bordered">
+				<thead>
+					<tr>
+						<th><center>Codigo</center></th>
+						<th><center>Item</center></th>
+						<th><center>Cantidad</center></th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for ordenProducto in ordenCompra.ordenproducto_set.all %}
+					<tr>
+						<td>{{ ordenProducto.producto.codigo }}</td>
+						<td><center>{{ ordenProducto.producto.nombre }}</center></td>
+						<td><center><input type="number" value="{{ ordenProducto.cantidad }}" min="1" class="qty"/></center></td>
+					</tr>
+					{% endfor %}
+					<tr>
+						<td colspan="5">T O T A L: {{ ordenCompra.total }}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+{% endblock %}

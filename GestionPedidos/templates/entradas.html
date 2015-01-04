@@ -1,0 +1,46 @@
+{% extends "base_site.html" %}
+{% load staticfiles %}
+
+{% block content_title %}
+	{% include 'content_title.html' %}
+{% endblock %}
+
+{% block content_slider %}
+	{% include 'content_slider.html' %}
+{% endblock %}
+
+{% block content %}
+
+<section>
+	{% for producto in entradas %}
+		{% if forloop.counter0|divisibleby:2 %}
+			<div class="row-fluid">
+		{% endif %}
+				<fieldset class="span6 well">
+					<div class="span6 contenedor" id="trece">
+						<img class="" src="{{ producto.imagen.url }}">
+						<p class="texto"> {{ producto.nombre }} </p>
+					</div>
+					<div class="span6">
+						<center><h4>{{ producto.nombre }}</h4><br/>
+							<p>
+								{% for ingrediente in producto.ingredientes.all %}
+									{{ ingrediente }}{% if not forloop.last %}, {% else %}. {% endif %}
+								{% endfor %}
+							</p>
+						</center>
+						</br>
+						<center>
+							<a class="btn btn-danger" href="{% url 'agregarProducto' producto.id %}">Agregar al carrito</br>
+								<i class="icon-shopping-cart icon-white"></i>
+							</a>
+						</center>
+					</div>
+				</fieldset>
+	  	{% if forloop.counter|divisibleby:2 %}
+			</div>
+	  	{% endif %}
+	{% endfor %}
+</section>
+
+{% endblock %}
