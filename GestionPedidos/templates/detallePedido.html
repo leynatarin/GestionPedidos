@@ -47,8 +47,8 @@
 				<tbody>
 					{% for ordenProducto in ordenCompra.ordenproducto_set.all %}
 					<tr>
-						<td>{{ ordenProducto.producto.codigo }}</td>
-						<td><center>{{ ordenProducto.producto.nombre }}</center></td>
+						<td><center>{{ ordenProducto.producto.codigo }}</center></td>
+						<td><center>{{ ordenProducto.producto.nombre.capitalize }}</center></td>
 						<td><center><input type="number" value="{{ ordenProducto.cantidad }}" min="1" class="qty"/></center></td>
 					</tr>
 					{% endfor %}

@@ -11,3 +11,20 @@ fieldset legend {
     border-radius: 5px;
     box-shadow: 0 0 0 5px #ddd;
 }
+
+.parrafo{
+    color: #000;   
+}
+.enlace {
+  color: #00a1d2;
+   text-decoration: underline;
+}
+.enlace:hover {
+    text-decoration: underline;
+    color: #980000;
+}
+
+.control-label {
+    color: #000;
+}
+

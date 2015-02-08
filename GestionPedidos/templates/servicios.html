@@ -8,33 +8,45 @@
 {% block content %}
 
 <div id="contenservicios">
-	<div id="eventos">
-		<img src="{% static 'images/salones.jpg' %}" alt="salones" />
+	
+	<div class="row-fluid">
+	<div class="span12">
+
+	<div class="span8">
+		<div class="row-fluid">
+			<div class="span6">
+				<img src="{% static 'images/salones.jpg' %}" alt="salones" />		
+			</div>
+			<div class="span6">
+				<img src="{% static 'images/reservas.jpg' %}" alt="reservas" />
+			</div>
+		</div>
+		<br/>
+		<div class="row-fluid">
+			<div class="span6">
+				<img src="{% static 'images/cumpleanos.jpg' %}" alt="cumpleanios" />		
+			</div>
+			<div class="span6">
+				<img src="{% static 'images/eventos.jpg' %}" alt="eventos" />
+			</div>
+		</div>
+	</div>
+	<div class ="span4">
+		<aside id="texto_side">
+			<h2>EVENTOS:</h2>
+			<h4>Salón para celebración de fiestas, eventos empresariales con capacidad para 30 personas.</h4></br>
+			<h3 class="title-yellow">Cumpleaños</h3>
+			<h4>Preocúpate simplemente por pasar un rato divertido en compañía de tus familiares y amigos, nosotros nos encargaremos de que tu cumpleaños sea un evento cargado de gratas sorpresas.</h4>
+			</br>
+			<h3 class="title-yellow">Cena Romantica</h3>
+			<h4>Déjate cautivar por una excelente atención y permite que tu pareja se lleve el mejor recuerdo.</h4>
+			</br>
+			<h3 class="title-yellow">Reunión Empresarial</h3>
+			<h4>Nuestros eventos empresariales cuentan con excelente atencion  permite que tus invitados se lleven la mejor imagen.</h4>
+		</aside> 
 	</div>
 
-	<div id="reunionE">
-		<img src="{% static 'images/reservas.jpg' %}" alt="reservas" />
 	</div>
-
-	<div id="cumpleanos">
-		<img src="{% static 'images/cumpleanos.jpg' %}" alt="cumpleanios" />
 	</div>
-
-	<div id="event">
-		<img src="{% static 'images/eventos.jpg' %}" alt="eventos" />
-	</div>
-
-	<aside id="texto">
-		EVENTOS:</br>
-		<h4>Salón para celebración de fiestas, eventos empresariales con capacidad para 30 personas.</h4></br></br>
-		Cumpleaños</br></br>
-		<h4>Preocúpate simplemente por pasar un rato divertido en compañía de tus familiares y amigos, nosotros nos encargaremos de que tu cumpleaños sea un evento cargado de gratas sorpresas.</h4>
-		</br>
-		Cena Romantica</br></br>
-		<h4>Déjate cautivar por una excelente atención y permite que tu pareja se lleve el mejor recuerdo.</h4>
-		</br>
-		Reunion Empresarial</br></br>
-		<h4>Nuestros eventos empresariales cuentan con excelente atencion  permite que tus invitados se lleven la mejor imagen.</h4>
-	</aside> 
 </div>
 {% endblock %}

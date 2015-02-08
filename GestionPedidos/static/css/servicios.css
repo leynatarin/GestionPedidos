@@ -1,11 +1,6 @@
-
-
-
 #contenservicios{
 padding: 1em;
 background-color: #800000;
- width: 1230px;
- height :800px;
 }
 
 #eventos {
@@ -51,6 +46,21 @@ margin-top: .5em;
 
 }
 
+#texto_side {
+  font-family: serif; 
+  padding: 2em;
+  background: #8B0000;
+  text-align: center;
+  color: #FFA500; 
+  border-radius: 15px 0px 15px 0px;
+  box-shadow: 3px 8px 40px #000000;
+}
+
+.title-yellow {
+  color: yellow;
+    font-family: "Homer Simpson", cursive;
+}
+
 #texto {
    font-family: serif; 
   padding: 2em;
@@ -70,15 +80,15 @@ margin-top: .5em;
 }
 
 h4{
-	 font-family: serif; 
-   text-align: center;
-	color: #FFFFFF;
-    font-size: 90%; 
-    padding: 0em;
+	font-size: 1.1em;
+  font-family: "Homer Simpson", cursive;
+  color: #FFFFFF;
+  text-align: center;
+  padding-top:10px;
  
+  -webkit-transition: padding-top .4s;
+
 }
-
-
 
 
 

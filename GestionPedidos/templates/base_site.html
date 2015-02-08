@@ -49,13 +49,17 @@
 							<i class="icon-shopping-cart icon-white"></i> Ver carrito de compra </a>
 						</li>
 						<li class="dropdown">
+							<a href="{% url 'historialCompra' %}">
+							<i class=" icon-list-alt icon-white"></i> Mis Ordenes</a>
+						</li>
+						<li class="dropdown">
 							<a href="{% url 'editarPerfil' %}">
 							<i class="icon-user icon-white"></i> Mi Perfil </a>
 						</li>
 						{% if user.is_staff %}
 						<li class="dropdown">
 							<a href="{% url 'listaPedidos' %}">
-							<i class="icon-shopping-cart icon-white"></i> Lista de Pedidos </a>
+							<i class="icon-list icon-white"></i> Lista de Pedidos </a>
 						</li>
 						{% endif %}
 						<li class="dropdown">

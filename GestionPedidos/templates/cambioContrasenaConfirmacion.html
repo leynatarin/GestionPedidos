@@ -1,0 +1,53 @@
+{% extends "base_site.html" %}
+{% load staticfiles %}
+
+{% block content_title %}
+    {% include 'content_title.html' %}
+{% endblock %}
+
+{% block content %}
+<section>
+ 
+ {% if validlink %}
+        <p>Please enter your new password twice.<br />
+           So we can verify you typed it in correctly.</p>
+        <form action="" method="post">
+            <div style="display:none">
+                <input type="hidden" value="{{ csrf_token }}" name="csrfmiddlewaretoken">
+            </div>
+            <table>
+                
+                    <td>{{ form.new_password1.errors }}</td>
+
+                 <div class="control-group">
+                                 <label class="control-label" for="id_new_password1">New password:</label>
+                                    <div class="controls">
+                                         {{ form.new_password1 }}
+                                    </div>
+                 </div>
+
+               
+                    <td>{{ form.new_password2.errors }}</td>
+
+                 <div class="control-group">
+                                 <label class="control-label" for="id_new_password2">Confirm password:</label>
+                                    <div class="controls">
+                                         {{ form.new_password2 }}
+                                    </div>
+                 </div>
+
+                <tr>
+                    <td></td>
+                    <td><input type="submit" value="Cambiar Contraseña" /></td>
+                </tr>
+            </table>
+        </form>
+    {% else %}
+        <h1>Password reset unsuccessful</h1>
+        <p>The password reset link was invalid, <br />
+        possibly because it has already been used. <br />
+        Please request a new password reset.</p>
+    {% endif %}
+    
+</section>
+{% endblock %}

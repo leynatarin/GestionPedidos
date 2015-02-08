@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from recommends.providers import recommendation_registry, RecommendationProvider
 
 class Categoria(models.Model):
 	nombre = models.CharField(max_length=30)
@@ -42,3 +43,24 @@ class OrdenProducto(models.Model):
 	producto = models.ForeignKey(Producto)
 	ordenCompra = models.ForeignKey(OrdenCompra)
 	cantidad = models.IntegerField()
+
+class ProductRecommendationProvider(RecommendationProvider):
+    def get_users(self):
+        return User.objects.filter(is_active=True).distinct()
+
+    def get_items(self):
+        return Product.objects.all()
+
+    def get_ratings(self, obj):
+        return OrdenProducto.objects.filter(product=obj)
+
+    def get_rating_score(self, rating):
+        return rating.cantidad
+
+    def get_rating_user(self, rating):
+        return rating.ordenCompra.usuario
+
+    def get_rating_item(self, rating):
+    	return rating.producto
+
+recommendation_registry.register(OrdenProducto, [Producto], ProductRecommendationProvider)

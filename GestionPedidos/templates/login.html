@@ -21,6 +21,7 @@
                     
                      <legend><center><h3>Login</h3></center></legend> 
                         <form method="post" action="{% url 'django.contrib.auth.views.login' %}" class="form-horizontal">
+
         {% csrf_token %}
 
          <div class="control-group">
@@ -40,8 +41,15 @@
          <div class="text-center" >
                  <input type="submit" class="btn btn-danger"  value="Login"/>
 
+
                  <input type="hidden" name="next" value="/menu/"/>
+
                 </div>
+            </br>
+               <center><p class="parrafo">¿No estas registrado? Registrate<a class="enlace" href="{% url 'registro' %}"> aqui.</a></p></center>
+            </br>
+               <center><a class="enlace" href="{% url 'password_reset' %}"> <p class="parrafo">Olvide mi contraseña </a></p></center>
+                   
              </form>
         </fieldset>
      </div>

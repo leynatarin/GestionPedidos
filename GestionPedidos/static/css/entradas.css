@@ -29,7 +29,7 @@ footer
 
 }
 #todo header{
-	background: rgba(100, 100, 100, 0.4) url("../images/banner.jpg");;
+	background: rgba(100, 100, 100, 0.4) url("../images/banner.jpg");
 	height:200px;
 	border:solid 50px;
 	padding:4em;
@@ -48,14 +48,13 @@ h2.subheader, h3.subheader{
 	color:#FF0000;
 }
 
+
 div.contenedor{
 	width: auto;
 	height: 230px;
 	float:left;
 	-webkit-transition: height .8s;
 }
-
-
 
 img.icon{
 	display: block;
@@ -67,16 +66,6 @@ img.icon{
 	-webkit-box-shadow: 0px 0px 0px 30px rgba(255,255,255,0);
 	-webkit-transition:box-shadow .4s;
 }
-p.texto, p.texto a{
-	font-size: 1.1em;
-	color:white;
-	text-align: center;
-	padding-top:10px;
-	opacity: .4;
-	-webkit-transition: padding-top .4s;
-}
-
-
 
 div.contenedor:hover{
 	height:250px;

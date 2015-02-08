@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
@@ -35,9 +34,10 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'recommends',
+    'recommends.storages.djangoorm',
     'restaurante',
     'registro',
-
 )
 
 MIDDLEWARE_CLASSES = (
@@ -110,3 +110,12 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.media",
     "django.core.context_processors.request",
 )
+
+if DEBUG:
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_HOST = 'smtp.gmail.com'
+    EMAIL_PORT = 587
+    EMAIL_HOST_USER = 'leynathl'
+    EMAIL_HOST_PASSWORD = 'joseorrego'
+    EMAIL_USE_TLS = True
+    DEFAULT_FROM_EMAIL = 'leynathl@gmail.com'

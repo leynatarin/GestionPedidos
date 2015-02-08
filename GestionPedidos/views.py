@@ -122,3 +122,8 @@ def listaPedidos(request):
 def detallePedido(request, id):
 	orden = OrdenCompra.objects.get(id=id)
 	return render_to_response('detallePedido.html', {'ordenCompra': orden}, context_instance=RequestContext(request))
+
+
+def historialCompra(request):
+	ordenes = OrdenCompra.objects.filter(usuario=request.user)
+	return render_to_response('historialCompra.html', {'ordenes': ordenes}, context_instance=RequestContext(request))

@@ -1,0 +1,46 @@
+{% extends "base_site.html" %}
+{% load staticfiles %}
+
+{% block content_title %}
+    {% include 'content_title.html' %}
+{% endblock %}
+
+{% block content %}
+<section>
+    {% if form.errors %}
+        <p>form.errors</p>
+    {% endif %} 
+
+
+<div class="container-fluid">
+    <div class="row-fluid">
+
+        <div class="offset3 span6">
+
+            <fieldset class="">      
+                    
+                     <legend><center><h3>Cambio de Contraseña</h3></center></legend> 
+                        <form method="post" action="{% url 'django.contrib.auth.views.password_reset' %}" class="form-horizontal">
+
+        {% csrf_token %}
+
+         <div class="control-group">
+                                 <label class="control-label" for="nombre">Correo Electronico:</label>
+                                    <div class="controls">
+                                         {{ form.email }}
+                                    </div>
+        </div>
+    
+    
+         <div class="text-center" >
+                 <input type="submit" class="btn btn-danger"  value="Enviar"/>
+        </div>
+           
+             </form>
+        </fieldset>
+     </div>
+    </div>       
+</div>
+ 
+</section>
+{% endblock %}

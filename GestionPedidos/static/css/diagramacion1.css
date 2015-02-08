@@ -10,7 +10,6 @@ footer
 	font-style: italic;
 }
 
-
 #contenido
 {
 	width: auto;
@@ -30,7 +29,7 @@ footer
 
 }
 #todo header{
-	background: rgba(100, 100, 100, 0.4) url("../images/banner.jpg");;
+	background: rgba(100, 100, 100, 0.4) url("../images/banner.jpg");
 	height:200px;
 	border:solid 50px;
 	padding:4em;
@@ -41,6 +40,7 @@ footer
 h1#header{ 
 	text-align: center;
 	color: #FF0000;
+	font-family: "Homer Simpson", cursive;
 }
 
 h2.subheader, h3.subheader{
@@ -123,11 +123,9 @@ p.texto, p.texto a{
 	color:white;
 	text-align: center;
 	padding-top:10px;
-	opacity: .4;
+	font-family: "Homer Simpson", cursive; 
 	-webkit-transition: padding-top .4s;
 }
-
-
 
 div.contenedor:hover{
 	height:250px;

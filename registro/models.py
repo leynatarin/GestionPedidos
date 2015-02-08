@@ -4,12 +4,14 @@ from django.conf import settings
 from django.contrib.auth.models import User
 from django.db import models
 from django.forms import ModelForm
+from django.core.files.images import get_image_dimensions
 
 class Perfil(models.Model):
     user      = models.OneToOneField(User, unique=True, related_name='perfil')
     telefono  = models.PositiveIntegerField()
     direccion = models.TextField(max_length=1024)
     barrio    = models.TextField(max_length=1024)
+    avatar = models.ImageField(upload_to='avatars/', blank=True)
 
     def __unicode__(self):
         return self.user.username
@@ -29,9 +31,43 @@ class FormularioRegistro(ModelForm):
 class FormularioRegistroPerfil(ModelForm):
     class Meta:
         model   = Perfil
-        fields  = [ 'telefono', 'direccion', 'barrio' ]
+        fields  = [ 'avatar', 'telefono', 'direccion', 'barrio' ]
         widgets = {
+            'avatar': forms.FileInput(attrs={'id':'avatar', 'name':'avatar', 'size':'100','maxlength':'100','class':'span8'}),
             'telefono': forms.TextInput(attrs={'placeholder':'Teléfono o Celular', 'id':'telefono', 'name':'telefono', 'size':'20','maxlength':'100','class':'span8'}),
             'direccion': forms.TextInput(attrs={'placeholder':'Dirección' , 'id':'direccion', 'name':'direccion', 'size':'20','maxlength':'100','class':'span8'}),
             'barrio': forms.TextInput(attrs={'placeholder':'Barrio', 'id':'barrio', 'name':'barrio', 'size':'20','maxlength':'100','class':'span8'}),
         }
+
+    def clean_avatar(self):
+        avatar = self.cleaned_data['avatar']
+        
+        if (avatar):
+            try:
+                w, h = get_image_dimensions(avatar)
+                #validate dimensions
+                max_width = max_height = 350
+                if w > max_width or h > max_height:
+                    raise forms.ValidationError(
+                        u'Please use an image that is '
+                         '%s x %s pixels or smaller.' % (max_width, max_height))
+                    
+                #validate content type
+                main, sub = avatar.content_type.split('/')
+                if not (main == 'image' and sub in ['jpeg', 'pjpeg', 'gif', 'png', 'jpg']):
+                    raise forms.ValidationError(u'Please use a JPEG, '
+                        'GIF or PNG image.')
+                    
+                #validate file size
+                if len(avatar) > (20 * 1024):
+                    raise forms.ValidationError(
+                        u'Avatar file size may not exceed 20k.')
+                    
+            except AttributeError:
+                """
+                Handles case when we are updating the user profile
+                and do not supply a new avatar
+                """
+                pass
+            
+        return avatar

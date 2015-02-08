@@ -10,7 +10,7 @@ from registro.models import FormularioRegistro, FormularioRegistroPerfil, Perfil
 def registro(request):
     if request.method == 'POST':  # If the form has been submitted...
         userForm = FormularioRegistro(request.POST)  # A form bound to the POST data
-        perfilForm = FormularioRegistroPerfil(request.POST)
+        perfilForm = FormularioRegistroPerfil(request.POST, request.FILES)
         if userForm.is_valid() and perfilForm.is_valid():  # All validation rules pass
 
             # Process the data in form.cleaned_data
@@ -20,6 +20,7 @@ def registro(request):
             first_name = userForm.cleaned_data["first_name"]
             last_name  = userForm.cleaned_data["last_name"]
 
+            avatar    = perfilForm.cleaned_data["avatar"]
             telefono  = perfilForm.cleaned_data["telefono"]
             direccion = perfilForm.cleaned_data["direccion"]
             barrio    = perfilForm.cleaned_data["barrio"]
@@ -31,7 +32,7 @@ def registro(request):
             user.first_name = first_name
             user.last_name = last_name
 
-            perfil = Perfil.objects.create(user=user, telefono=telefono, direccion=direccion, barrio=barrio)
+            perfil = Perfil.objects.create(user=user, avatar=avatar, telefono=telefono, direccion=direccion, barrio=barrio)
 
             # Save new user attributes
             user.save()
@@ -66,6 +67,9 @@ def editarPerfil(request):
 
             if not userForm["last_name"].errors:
                 usuario.last_name = userForm.cleaned_data["last_name"]
+
+            if not perfilForm["avatar"].errors:
+                perfil.avatar = perfilForm.cleaned_data["avatar"]
 
             if not perfilForm["telefono"].errors:
                 perfil.telefono = perfilForm.cleaned_data["telefono"]
