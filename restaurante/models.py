@@ -49,10 +49,10 @@ class ProductRecommendationProvider(RecommendationProvider):
         return User.objects.filter(is_active=True).distinct()
 
     def get_items(self):
-        return Product.objects.all()
+        return Producto.objects.all()
 
     def get_ratings(self, obj):
-        return OrdenProducto.objects.filter(product=obj)
+        return OrdenProducto.objects.filter(producto=obj)
 
     def get_rating_score(self, rating):
         return rating.cantidad
@@ -62,8 +62,5 @@ class ProductRecommendationProvider(RecommendationProvider):
 
     def get_rating_item(self, rating):
     	return rating.producto
-
-    def get_rating_site(self, rating):
-        return Site.objects.get_current()
 
 recommendation_registry.register(OrdenProducto, [Producto], ProductRecommendationProvider)
