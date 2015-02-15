@@ -63,4 +63,7 @@ class ProductRecommendationProvider(RecommendationProvider):
     def get_rating_item(self, rating):
     	return rating.producto
 
+    def get_rating_site(self, rating):
+        return Site.objects.get_current()
+
 recommendation_registry.register(OrdenProducto, [Producto], ProductRecommendationProvider)

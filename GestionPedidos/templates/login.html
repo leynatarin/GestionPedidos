@@ -11,7 +11,7 @@
         <p>Tu nombre de usuario y contraseña no son correctas. Por favor intente de nuevo.</p>
     {% endif %} 
 
-
+</br>
 <div class="container-fluid">
     <div class="row-fluid">
 
@@ -19,7 +19,8 @@
 
             <fieldset class="">      
                     
-                     <legend><center><h3>Login</h3></center></legend> 
+                     <legend><center><h1 id="header2">Login</h1></center></legend> 
+                 </br>
                         <form method="post" action="{% url 'django.contrib.auth.views.login' %}" class="form-horizontal">
 
         {% csrf_token %}

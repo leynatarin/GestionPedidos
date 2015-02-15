@@ -43,6 +43,12 @@ h1#header{
 	font-family: "Homer Simpson", cursive;
 }
 
+h1#header2{
+	text-align: center;
+	color: #FFFFFF;
+	font-family: "Homer Simpson", cursive;
+}
+
 h2.subheader, h3.subheader{
 	text-align: center;
 	margin-top:1px;
@@ -127,6 +133,7 @@ p.texto, p.texto a{
 	-webkit-transition: padding-top .4s;
 }
 
+
 div.contenedor:hover{
 	height:250px;
 }
@@ -140,3 +147,30 @@ div.contenedor:hover img.icon{
 	-webkit-box-shadow:0px 0px 0px 0px rgba(255,255,255,.6);
 }
 
+label.control-label{
+	font-size: 1.1em;
+	text-align: center;
+	color: #000000;
+	font-family: "Homer Simpson", cursive;
+
+}
+
+div.controls{
+	text-align: center;
+	color: #000000;
+	font-family: "Homer Simpson", cursive;
+}
+
+p.parrafo{
+	font-size: 1.1em;
+	text-align: center;
+	color: #000000;
+	font-family: "Homer Simpson", cursive;
+}
+
+input.btn btn-danger{
+
+text-align: center;
+	color: #000000;
+	font-family: "Homer Simpson", cursive;
+}

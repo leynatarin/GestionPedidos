@@ -27,7 +27,7 @@
 					{% for key, value in carrito.items %}
 						<tr>
 							<td><center><input type="number" value="{{ value.0 }}" min="1" class="qty"/></center></td>
-							<td>{{ value.1 }}</td>
+							<td>{{ value.1.capitalize }}</td>
 							<td>{{ value.2 }}</td>
 							<td>{{ value.3 }}</td>
 							<td><center><button type="button" class="btn btn-danger btn-mini"><i class="icon-remove icon-white"></i> </button></center></td>

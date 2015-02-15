@@ -16,12 +16,13 @@
 		{% endif %}
 				<fieldset class="span6 well">
 					<div class="span6 contenedor" id="trece">
+					</br>
 						<img class="" src="{{ producto.imagen.url }}">
-						<p class="texto"> {{ producto.nombre }} </p>
+						
 					</div>
 					<div class="span6">
-						<center><h4>{{ producto.nombre }}</h4><br/>
-							<p>
+						<center><h4>{{ producto.nombre }}</h4>
+							<p class="texto">
 								{% for ingrediente in producto.ingredientes.all %}
 									{{ ingrediente }}{% if not forloop.last %}, {% else %}. {% endif %}
 								{% endfor %}

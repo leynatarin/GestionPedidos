@@ -11,23 +11,35 @@
 
 
 <section>
-</br>
-	<h2 id="header">Recomendacion de Platos</h2>
-</br>
-
-
+<div class="row-fluid">
+	<div class="span12">
+		<div class="span9">
 	{% for categoria in categorias_list %}
-		{% if forloop.counter0|divisibleby:4 %}
-			<div class="row-fluid">
+		{% if forloop.counter0|divisibleby:3 %}
+			<div class="row-fluid">		
 		{% endif %}
-
-		<div class="span3 contenedor" id="{{ categoria.enlaceHtml }}">
-		<img class="icon" src="{{ categoria.imagen.url }}">
-		<p class="texto"><a href="/{{ categoria.enlaceHtml }}">{{ categoria.nombre }}</a></p>
-		</div>
-		{% if forloop.counter|divisibleby:4 %}
+			<div class="span4 contenedor" id="{{ categoria.enlaceHtml }}">
+			<img class="icon" width="80%" src="{{ categoria.imagen.url }}">
+			<p class="texto"><a href="/{{ categoria.enlaceHtml }}">{{ categoria.nombre }}</a></p>
+			</div>
+		{% if forloop.counter|divisibleby:3 or forloop.last %}
 			</div>
 	  	{% endif %}
 	{% endfor %}
+		</div>
+		<div class="span3 vticker" id="recomendaciones">
+			
+			<ul>
+				<li>Triangles can be made easily using CSS also without any images. This trick requires only div tags and some CSS works. To get this trick, just use the code below.</li>
+				<li>List 2</li>
+				<li>List 3</li>
+				<li>List 4</li>
+				<li>List 5 </li>
+				<li class="ww">Hey... Triangles can be made easily using CSS also without any images. This trick requires only div tags and some CSS works. To get this trick, just use the code below.</li>
+			</ul>
+		</div>
+	</div>
+</div>
+
 </section>
 {% endblock %}

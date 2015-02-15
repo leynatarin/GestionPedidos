@@ -55,6 +55,9 @@ WSGI_APPLICATION = 'GestionPedidos.wsgi.application'
 
 AUTH_PROFILE_MODULE = "registro.Perfil"
 
+RECOMMENDS_TASK_RUN = True
+
+RECOMMENDS_TASK_CRONTAB = {'hour': '*/1'}
 
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
