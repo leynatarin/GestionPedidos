@@ -1,5 +1,6 @@
 {% extends "base_site.html" %}
 {% load staticfiles %}
+{% load recommends %}
 
 {% block content_title %}
 	{% include 'content_title.html' %}
@@ -30,12 +31,13 @@
 		<div class="span3 vticker" id="recomendaciones">
 			
 			<ul>
-				<li>Triangles can be made easily using CSS also without any images. This trick requires only div tags and some CSS works. To get this trick, just use the code below.</li>
-				<li>List 2</li>
-				<li>List 3</li>
-				<li>List 4</li>
-				<li>List 5 </li>
-				<li class="ww">Hey... Triangles can be made easily using CSS also without any images. This trick requires only div tags and some CSS works. To get this trick, just use the code below.</li>
+				{% suggested as suggestions %}
+				{% for suggested in suggestions %}
+					<li>
+						<img class="" width="40%" src="{{ suggested.object.imagen.url }}">
+						{{ suggested.object.nombre.capitalize }}
+					</li>
+				{% endfor %}
 			</ul>
 		</div>
 	</div>

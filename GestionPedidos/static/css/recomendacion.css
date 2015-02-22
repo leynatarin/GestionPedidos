@@ -15,5 +15,41 @@
     color: #FFFFFF;
 }
 
-    
- 
+div.contenedor:hover p.texto{
+    padding-top:30px;
+    opacity:1;
+}
+
+div.contenedor:hover img.icon{
+    -webkit-box-shadow:0px 0px 0px 0px rgba(255,255,255,.6);
+}
+
+img.icon{
+    display: block;
+    margin:10px auto;
+    background-color: rgba(255,255,255,.15);
+    width:160px;
+    padding:20px;
+    -webkit-border-radius: 50%;
+    -webkit-box-shadow: 0px 0px 0px 30px rgba(255,255,255,0);
+    -webkit-transition:box-shadow .4s;
+}
+
+div.contenedor{
+    width: auto;
+    height: 230px;
+    float:left;
+    -webkit-transition: height .8s;
+}
+
+
+div.contenedor:hover{
+    height:250px;
+}
+
+fieldset {
+    font-family: sans-serif;
+    border: 5px solid #A9A9A9;
+    background: #FFF;
+    border-radius: 5px;
+}
