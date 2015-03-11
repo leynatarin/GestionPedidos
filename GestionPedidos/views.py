@@ -15,53 +15,10 @@ def menu(request):
 	categorias = Categoria.objects.all();
 	return render_to_response('menu.html', {'title': 'Menu', 'categorias_list': categorias}, context_instance=RequestContext(request))
 
-def entradas(request):
-	entradas_list = Producto.objects.filter(tipo__nombre="Entradas");
-	return render_to_response('entradas.html', {'title': 'Entradas', 'entradas': entradas_list}, context_instance=RequestContext(request))
-
-def menuInfantil(request):
-	infantil = Producto.objects.filter(tipo__nombre="Menu Infantil");
-	return render_to_response('menuInfantil.html', {'title': 'menu Infantil', 'menuInfantil': infantil}, context_instance=RequestContext(request))
-
-def perrosCalientes(request):
-	perros = Producto.objects.filter(tipo__nombre="Perros Calientes");
-	return render_to_response('perrosCalientes.html', {'title': 'Perros Calientes', 'perrosCalientes': perros}, context_instance=RequestContext(request))
-
-def hamburguesas(request):
-	hamburguesas = Producto.objects.filter(tipo__nombre="Hamburguesas");
-	return render_to_response('hamburguesas.html', {'title': 'Hamburguesas', 'hamburguesas': hamburguesas}, context_instance=RequestContext(request))
-
-def parrilla(request):
-	parrilla = Producto.objects.filter(tipo__nombre="Parrilla");
-	return render_to_response('parrilla.html', {'title': 'Parrilla', 'parrilla': parrilla}, context_instance=RequestContext(request))
-
-def pescados(request):
-	pescados = Producto.objects.filter(tipo__nombre="Pescados");
-	return render_to_response('pescados.html', {'title': 'Pescados', 'pescados': pescados}, context_instance=RequestContext(request))
-
-def sandwich(request):
-	sandwich = Producto.objects.filter(tipo__nombre="Sandwich");
-	return render_to_response('sandwich.html', {'title': 'Sandwich', 'sandwich': sandwich}, context_instance=RequestContext(request))
-
-def salchipapas(request):
-	salchipapas = Producto.objects.filter(tipo__nombre="Salchipapas");
-	return render_to_response('salchipapas.html', {'title': 'Salchipapas', 'salchipapas': salchipapas}, context_instance=RequestContext(request))
-
-def tostadas(request):
-	tostadas = Producto.objects.filter(tipo__nombre="Tostadas");
-	return render_to_response('tostadas.html', {'title': 'Tostadas', 'tostadas': tostadas}, context_instance=RequestContext(request))
-
-def ensaladas(request):
-	ensaladas = Producto.objects.filter(tipo__nombre="Ensaladas");
-	return render_to_response('ensaladas.html', {'title': 'Ensaladas', 'ensaladas': ensaladas}, context_instance=RequestContext(request))
-
-def desgranados(request):
-	desgranados = Producto.objects.filter(tipo__nombre="Desgranados");
-	return render_to_response('desgranados.html', {'title': 'Desgranados', 'desgranados': desgranados}, context_instance=RequestContext(request))
-
-def bebidas(request):
-	bebidas = Producto.objects.filter(tipo__nombre="Bebidas");
-	return render_to_response('bebidas.html', {'title': 'Bebidas', 'bebidas': bebidas}, context_instance=RequestContext(request))
+def verCategoria(request, categoriaId):
+	categoria = Categoria.objects.get(id=categoriaId);
+	listaProductos = Producto.objects.filter(tipo=categoria);
+	return render_to_response('detalleCategoria.html', {'title': categoria.nombre, 'listaProductos': listaProductos}, context_instance=RequestContext(request))
 
 @login_required(login_url='/login/')
 def agregarProducto(request, id_producto):

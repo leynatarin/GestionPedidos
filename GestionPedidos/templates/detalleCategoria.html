@@ -6,10 +6,11 @@
 {% endblock %}
 
 
+
 {% block content %}
 
 <section>
-	{% for producto in parrilla %}
+	{% for producto in listaProductos %}
 		{% if forloop.counter0|divisibleby:2 %}
 			<div class="row-fluid">
 		{% endif %}
@@ -28,11 +29,15 @@
 							</p>
 						</center>
 						</br>
+						{% if user.is_staff %}
+						<!-- El Usuario administrador no puede hacer pedidos. -->
+						{% else %}
 						<center>
 							<a class="btn btn-danger" href="{% url 'agregarProducto' producto.id %}">Agregar al carrito</br>
 								<i class="icon-shopping-cart icon-white"></i>
 							</a>
 						</center>
+						{% endif %}
 					</div>
 				</fieldset>
 	  	{% if forloop.counter|divisibleby:2 %}

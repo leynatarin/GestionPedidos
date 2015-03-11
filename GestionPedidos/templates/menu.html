@@ -21,7 +21,7 @@
 		{% endif %}
 			<div class="span4 contenedor" id="{{ categoria.enlaceHtml }}">
 			<img class="icon" width="80%" src="{{ categoria.imagen.url }}">
-			<p class="texto"><a href="/{{ categoria.enlaceHtml }}">{{ categoria.nombre }}</a></p>
+			<p class="texto"><a href="{% url 'verCategoria' categoria.id %}">{{ categoria.nombre }}</a></p>
 			</div>
 		{% if forloop.counter|divisibleby:3 or forloop.last %}
 			</div>
