@@ -1,0 +1,1 @@
+from restaurante.tests.views import *

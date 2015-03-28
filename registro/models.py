@@ -21,11 +21,11 @@ class FormularioRegistro(ModelForm):
         model   = User
         fields  = ['username', 'password', 'email', 'first_name', 'last_name']
         widgets = {
-            'username': forms.TextInput(attrs={'placeholder':'Nombre de usuario', 'id':'nombre', 'name':'nombre', 'size':'20','maxlength':'100','class':'span8'}),
-            'password': forms.PasswordInput(attrs={'placeholder': 'Contraseña', 'id':'contraseña', 'name':'contraseña', 'size':'20','maxlength':'100','class':'span8'}),
-            'email': forms.EmailInput(attrs={'placeholder':'E-Mail', 'id':'e-mail', 'name':'e-mail', 'size':'20','maxlength':'100','class':'span8'}),
-            'first_name': forms.TextInput(attrs={'placeholder':'Nombre', 'id':'primNombre', 'name':'primNombre', 'size':'20','maxlength':'100','class':'span8'}),
-            'last_name': forms.TextInput(attrs={'placeholder':'Apellidos', 'id':'apellido', 'name':'apellido', 'size':'20','maxlength':'100','class':'span8'}),
+            'username': forms.TextInput(attrs={'placeholder':'Nombre de usuario', 'id':'nombre', 'name':'nombre', 'maxlength':'100','class':''}),
+            'password': forms.PasswordInput(attrs={'placeholder': 'Contraseña', 'id':'contraseña', 'name':'contraseña', 'maxlength':'100','class':''}),
+            'email': forms.EmailInput(attrs={'placeholder':'E-Mail', 'id':'e-mail', 'name':'e-mail', 'maxlength':'100','class':''}),
+            'first_name': forms.TextInput(attrs={'placeholder':'Nombre', 'id':'primNombre', 'name':'primNombre', 'maxlength':'100','class':''}),
+            'last_name': forms.TextInput(attrs={'placeholder':'Apellidos', 'id':'apellido', 'name':'apellido', 'maxlength':'100','class':''}),
         }
 
 class FormularioRegistroPerfil(ModelForm):
@@ -33,10 +33,10 @@ class FormularioRegistroPerfil(ModelForm):
         model   = Perfil
         fields  = [ 'avatar', 'telefono', 'direccion', 'barrio' ]
         widgets = {
-            'avatar': forms.FileInput(attrs={'id':'avatar', 'name':'avatar', 'size':'100','maxlength':'100','class':'span8'}),
-            'telefono': forms.TextInput(attrs={'placeholder':'Teléfono o Celular', 'id':'telefono', 'name':'telefono', 'size':'20','maxlength':'100','class':'span8'}),
-            'direccion': forms.TextInput(attrs={'placeholder':'Dirección' , 'id':'direccion', 'name':'direccion', 'size':'20','maxlength':'100','class':'span8'}),
-            'barrio': forms.TextInput(attrs={'placeholder':'Barrio', 'id':'barrio', 'name':'barrio', 'size':'20','maxlength':'100','class':'span8'}),
+            'avatar': forms.FileInput(attrs={'id':'avatar', 'name':'avatar', 'maxlength':'100','class':'span8'}),
+            'telefono': forms.TextInput(attrs={'placeholder':'Teléfono o Celular', 'id':'telefono', 'name':'telefono', 'maxlength':'100','class':''}),
+            'direccion': forms.TextInput(attrs={'placeholder':'Dirección' , 'id':'direccion', 'name':'direccion', 'maxlength':'100','class':''}),
+            'barrio': forms.TextInput(attrs={'placeholder':'Barrio', 'id':'barrio', 'name':'barrio', 'maxlength':'100','class':''}),
         }
 
     def clean_avatar(self):

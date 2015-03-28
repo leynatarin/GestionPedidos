@@ -33,7 +33,7 @@ def agregarProducto(request, id_producto):
 		map_productos[id_producto] = [1]
 	request.session['carrito_compra'] = map_productos
 
-	return HttpResponseRedirect("/" + product.tipo.enlaceHtml)
+	return HttpResponseRedirect("/verCategoria/" + str(product.tipo.id))
 
 def carritoCompra(request):
 	if 'carrito_compra' in request.session:
@@ -79,7 +79,6 @@ def listaPedidos(request):
 def detallePedido(request, id):
 	orden = OrdenCompra.objects.get(id=id)
 	return render_to_response('detallePedido.html', {'ordenCompra': orden}, context_instance=RequestContext(request))
-
 
 def historialCompra(request):
 	ordenes = OrdenCompra.objects.filter(usuario=request.user)
