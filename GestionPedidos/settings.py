@@ -111,6 +111,7 @@ MEDIA_URL = '/media/'
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'GestionPedidos/templates'),
     os.path.join(BASE_DIR, 'restaurante/templates'),
+    os.path.join(BASE_DIR, 'registro/templates'),
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
