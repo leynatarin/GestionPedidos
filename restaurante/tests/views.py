@@ -4,21 +4,17 @@ from restaurante.models import *
 class GestionPedidoViewsTestCase(TestCase):
     fixtures = ['restaurante_views_testdata.json', 'user_testdata.json']
 
-
     def test_inicio(self):
         resp = self.client.get("/inicio/")
         self.assertEqual(resp.status_code, 200)
         self.assertTrue('title' in resp.context)
         self.assertEqual(resp.context['title'], 'inicio')
 
-
-
     def test_servicios(self):
         resp = self.client.get("/servicios/")
         self.assertEqual(resp.status_code, 200)
         self.assertTrue('title' in resp.context)
         self.assertEqual(resp.context['title'], 'Servicios')
-
 
     def test_menu(self):
     	resp = self.client.get("/menu/")
@@ -41,7 +37,6 @@ class GestionPedidoViewsTestCase(TestCase):
         self.assertEqual(len(resp.context['ordenes']), len(ordenes))
         for ord_idx in xrange(0, len(ordenes)):
             self.assertEqual(resp.context['ordenes'][ord_idx].id, ordenes[ord_idx].id)
-        
 
     def test_detallePedido(self):
         orden = OrdenCompra.objects.get(id=2)
@@ -88,7 +83,7 @@ class GestionPedidoViewsTestCase(TestCase):
 		
 		session = self.client.session
 		self.assertTrue('carrito_compra' in session)  # si todo termino bien, en la variable de sesion debio quedar el carrito de compra
-		 # obteniendo el carrito,  tener en cuenta que el carrito de compra es un hash map, donde el id del producto es el key, 
+        # obteniendo el carrito,  tener en cuenta que el carrito de compra es un hash map, donde el id del producto es el key, 
 		# y el valor es un arreglo, donde la primera posicion es la cantidad
 		carrito = session['carrito_compra'] 
 		self.assertTrue(carrito.has_key(str(prod.id))) # verificando que el producto con id 1 ha sido insertado a carrito de compra

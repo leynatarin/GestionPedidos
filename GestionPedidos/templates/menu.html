@@ -28,22 +28,15 @@
 	  	{% endif %}
 	{% endfor %}
 		</div>
-			<div >
-				<fieldset class="well">
-							<h4 >RECOMENDACIONES</h4>
-				</fieldset>
-			</div>
-	
-			<div >
-				<fieldset class="well">
-							<h4 >DESPUES DE QUE REALICES TU PRIMER PEDIDO PODRAS VER AQUI RECOMENDACIONES DE PLATOS</h4>
-				</fieldset>
-			</div>
+		<div >
+			<fieldset class="well">
+				<h4 >RECOMENDACIONES</h4>
+			</fieldset>
+		</div>
+		{% suggested as suggestions %}
+		{% if suggestions|length > 0  %}
 		<div class="span3 vticker" id="recomendaciones">
-			
-			
 			<ul>
-				{% suggested as suggestions %}
 				{% for suggested in suggestions %}
 					<li>
 						<img class="" width="40%" src="{{ suggested.object.imagen.url }}">
@@ -52,6 +45,13 @@
 				{% endfor %}
 			</ul>
 		</div>
+		{% else %}
+		<div >
+			<fieldset class="well">
+				<h4 >DESPUES DE QUE REALICES TU PRIMER PEDIDO PODRAS VER AQUI RECOMENDACIONES DE PLATOS</h4>
+			</fieldset>
+		</div>
+		{% endif %}
 	</div>
 </div>
 

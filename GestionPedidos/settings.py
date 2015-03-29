@@ -38,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_extensions',
+    'django_nose',
     'recommends',
     'recommends.tasks',
     'recommends.storages.djangoorm',
@@ -118,6 +119,16 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.media",
     "django.core.context_processors.request",
 )
+
+# Use nose to run all tests
+TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
+
+# Tell nose to measure coverage on the 'foo' and 'bar' apps
+NOSE_ARGS = [
+    '--with-coverage',
+    '--cover-package=restaurante',
+    '--cover-html',
+]
 
 if DEBUG:
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

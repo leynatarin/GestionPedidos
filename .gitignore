@@ -46,3 +46,5 @@ Temporary Items
 # Archivos Python y Django no necesarios
 
 *.pyc
+*.coverage
+cover/*
