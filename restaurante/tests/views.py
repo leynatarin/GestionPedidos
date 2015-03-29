@@ -8,7 +8,7 @@ class GestionPedidoViewsTestCase(TestCase):
         resp = self.client.get("/inicio/")
         self.assertEqual(resp.status_code, 200)
         self.assertTrue('title' in resp.context)
-        self.assertEqual(resp.context['title'], 'inicio')
+        self.assertEqual(resp.context['title'], 'Inicio')
 
     def test_servicios(self):
         resp = self.client.get("/servicios/")
