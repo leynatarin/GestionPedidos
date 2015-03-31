@@ -9,8 +9,8 @@
 <section>
  
  {% if validlink %}
-        <p>Please enter your new password twice.<br />
-           So we can verify you typed it in correctly.</p>
+        <p>Por favor, ingresa la contraseña dos veces.<br />
+           De este modo, podemos verificar que la hayas digitado correctamente.</p>
         <form action="" method="post">
             <div style="display:none">
                 <input type="hidden" value="{{ csrf_token }}" name="csrfmiddlewaretoken">
@@ -43,10 +43,10 @@
             </table>
         </form>
     {% else %}
-        <h1>Password reset unsuccessful</h1>
-        <p>The password reset link was invalid, <br />
-        possibly because it has already been used. <br />
-        Please request a new password reset.</p>
+        <h1>El proceso de recuperacion de contraseña ha fallado!</h1>
+        <p>El link utilizado para recuperar la contraseña es invalido, <br />
+        posiblemente se debe a que ya ha sido utilizado previamente. <br />
+        Por favor intenta nuevamente.</p>
     {% endif %}
     
 </section>

@@ -8,6 +8,6 @@
 {% block content %}
 <section>
     <p>Tu password ha sido reestablecido. Puedes ingresar de nuevo.</p>
-    <p><a href="{{ login_url }}">Ingresar</a></p>
+    <p><a href="{% url 'login' %}">Ingresar</a></p>
 </section>
 {% endblock %}

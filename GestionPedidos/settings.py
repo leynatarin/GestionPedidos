@@ -133,11 +133,10 @@ NOSE_ARGS = [
     '--cover-html',
 ]
 
-if DEBUG:
-    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-    EMAIL_HOST = 'smtp.gmail.com'
-    EMAIL_PORT = 587
-    EMAIL_HOST_USER = 'leynathl'
-    EMAIL_HOST_PASSWORD = 'joseorrego'
-    EMAIL_USE_TLS = True
-    DEFAULT_FROM_EMAIL = 'leynathl@gmail.com'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'maria.juana.tulua@gmail.com'
+EMAIL_HOST_PASSWORD = 'maria.juana'
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'maria.juana.tulua@gmail.com'
+SERVER_EMAIL = 'maria.juana.tulua@gmail.com'
