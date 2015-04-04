@@ -129,7 +129,7 @@ TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 NOSE_ARGS = [
     '--with-html-out',
     '--with-coverage',
-    '--cover-package=restaurante',
+    '--cover-package=restaurante,registro',
     '--cover-html',
 ]
 

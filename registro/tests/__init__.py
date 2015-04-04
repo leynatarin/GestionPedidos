@@ -1,0 +1,1 @@
+from registro.tests.views import *

@@ -1,0 +1,145 @@
+[
+{
+    "fields": {
+        "barrio": "vera",
+        "telefono": 3123456666,
+        "user": 13,
+        "avatar": "",
+        "direccion": "calee 3344 "
+    },
+    "model": "registro.perfil",
+    "pk": 1
+},
+{
+    "fields": {
+        "barrio": "marandua",
+        "telefono": 3123456666,
+        "user": 14,
+        "avatar": "",
+        "direccion": "cra 1 A # 22-43"
+    },
+    "model": "registro.perfil",
+    "pk": 2
+},
+{
+    "fields": {
+        "barrio": "veraneras",
+        "telefono": 3122212051,
+        "user": 15,
+        "avatar": "",
+        "direccion": "CRA 1 A # 22-45"
+    },
+    "model": "registro.perfil",
+    "pk": 3
+},
+{
+    "fields": {
+        "barrio": "buenos aires",
+        "telefono": 2324552,
+        "user": 4,
+        "avatar": "",
+        "direccion": "la 76"
+    },
+    "model": "registro.perfil",
+    "pk": 4
+},
+{
+    "fields": {
+        "barrio": "saman",
+        "telefono": 1234567677,
+        "user": 16,
+        "avatar": "",
+        "direccion": "calle 56"
+    },
+    "model": "registro.perfil",
+    "pk": 5
+},
+{
+    "fields": {
+        "barrio": "moticas",
+        "telefono": 23456785,
+        "user": 10,
+        "avatar": "",
+        "direccion": "calle 34"
+    },
+    "model": "registro.perfil",
+    "pk": 6
+},
+{
+    "fields": {
+        "barrio": "Encuentrelo",
+        "telefono": 0,
+        "user": 17,
+        "avatar": "",
+        "direccion": "Calle busquela"
+    },
+    "model": "registro.perfil",
+    "pk": 7
+},
+{
+    "fields": {
+        "barrio": "Encuentrelo",
+        "telefono": 5555555,
+        "user": 18,
+        "avatar": "",
+        "direccion": "Calle busquela"
+    },
+    "model": "registro.perfil",
+    "pk": 8
+},
+{
+    "fields": {
+        "barrio": "Barr",
+        "telefono": 0,
+        "user": 19,
+        "avatar": "avatars/mio.jpg",
+        "direccion": "Dir"
+    },
+    "model": "registro.perfil",
+    "pk": 9
+},
+{
+    "fields": {
+        "barrio": "ba",
+        "telefono": 0,
+        "user": 20,
+        "avatar": "",
+        "direccion": "di"
+    },
+    "model": "registro.perfil",
+    "pk": 10
+},
+{
+    "fields": {
+        "barrio": "B",
+        "telefono": 0,
+        "user": 21,
+        "avatar": "avatars/mio_1.jpg",
+        "direccion": "D"
+    },
+    "model": "registro.perfil",
+    "pk": 11
+},
+{
+    "fields": {
+        "barrio": "Las Veraneras",
+        "telefono": 3164937068,
+        "user": 22,
+        "avatar": "",
+        "direccion": "cra 1 A # 22-45"
+    },
+    "model": "registro.perfil",
+    "pk": 12
+},
+{
+    "fields": {
+        "barrio": "Camino Real VII Etapa",
+        "telefono": 3164937068,
+        "user": 23,
+        "avatar": "",
+        "direccion": "Cll 9B # 50 - 100. Apto 401G"
+    },
+    "model": "registro.perfil",
+    "pk": 13
+}
+]

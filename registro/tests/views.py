@@ -1,8 +1,8 @@
 from django.test import TestCase
-from restaurante.models import *
+from registro.models import *
 
-class RestauranteViewsTestCase(TestCase):
-    fixtures = ['restaurante_testdata.json', 'user_testdata.json']
+class RegistroViewsTestCase(TestCase):
+    fixtures = ['registro_testdata.json', 'user_testdata.json']
 
     def test_inicio(self):
         resp = self.client.get("/inicio/")
