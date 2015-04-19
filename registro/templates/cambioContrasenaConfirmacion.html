@@ -8,46 +8,58 @@
 {% block content %}
 <section>
  
- {% if validlink %}
-        <p>Por favor, ingresa la contraseña dos veces.<br />
-           De este modo, podemos verificar que la hayas digitado correctamente.</p>
-        <form action="" method="post">
-            <div style="display:none">
-                <input type="hidden" value="{{ csrf_token }}" name="csrfmiddlewaretoken">
-            </div>
-            <table>
-                
-                    <td>{{ form.new_password1.errors }}</td>
 
-                 <div class="control-group">
-                                 <label class="control-label" for="id_new_password1">New password:</label>
-                                    <div class="controls">
-                                         {{ form.new_password1 }}
-                                    </div>
-                 </div>
-
-               
-                    <td>{{ form.new_password2.errors }}</td>
-
-                 <div class="control-group">
-                                 <label class="control-label" for="id_new_password2">Confirm password:</label>
-                                    <div class="controls">
-                                         {{ form.new_password2 }}
-                                    </div>
-                 </div>
-
-                <tr>
-                    <td></td>
-                    <td><input type="submit" value="Cambiar Contraseña" /></td>
-                </tr>
-            </table>
-        </form>
-    {% else %}
-        <h1>El proceso de recuperacion de contraseña ha fallado!</h1>
-        <p>El link utilizado para recuperar la contraseña es invalido, <br />
-        posiblemente se debe a que ya ha sido utilizado previamente. <br />
-        Por favor intenta nuevamente.</p>
-    {% endif %}
+ <div class="container-fluid">
     
+     <div class="row-fluid">
+
+        <div class="offset3 span6">
+
+            <fieldset class="">      
+
+             <legend><center><h3>Restablecer Contraseña</h3></center></legend> 
+                       
+             {% if validlink %}
+
+          <p class="parrafo">Por favor, ingresa la contraseña dos veces.
+            De este modo, podemos verificar que la hayas digitado correctamente.</p>
+             </br>
+                    <form action="" method="post">
+                             <div style="display:none">
+                                <input type="hidden" value="{{ csrf_token }}" name="csrfmiddlewaretoken">
+                            </div>
+                      
+                             <div class="control-group">
+                                             <label class="control-label" for="id_new_password1">Nueva contraseña:</label>
+                                                <div class="controls">
+                                                     {{ form.new_password1 }}
+                                                </div>
+                             </div>
+
+                             <div class="control-group">
+                                             <label class="control-label" for="id_new_password2">Confirme contraseña:</label>
+                                                <div class="controls">
+                                                     {{ form.new_password2 }}
+                                                </div>
+                             </div>
+
+                     <div class="text-center" > 
+                        <input type="submit" class="btn btn-danger"  value="Cambiar Contraseña"/>
+                    </div>
+                       
+                       
+                   
+                    </form>
+                {% else %}
+                    <h1>El proceso de recuperacion de contraseña ha fallado!</h1>
+                    <p>El link utilizado para recuperar la contraseña es invalido, <br />
+                    posiblemente se debe a que ya ha sido utilizado previamente. <br />
+                    Por favor intenta nuevamente.</p>
+                {% endif %}
+             </fieldset>
+          </div>
+     </div>       
+</div>
+ 
 </section>
 {% endblock %}

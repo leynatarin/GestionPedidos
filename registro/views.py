@@ -53,6 +53,7 @@ def registro(request):
 def editarPerfil(request):
     usuario = User.objects.get(id=request.user.id)
     perfil = Perfil.objects.get(user=usuario)
+    mensaje = ""
 
     if request.method == 'POST':  # If the form has been submitted...
         userForm = FormularioRegistro(request.POST, instance=usuario)  # A form bound to the POST data
@@ -83,14 +84,16 @@ def editarPerfil(request):
             # Save new user attributes
             usuario.save()
             perfil.save()
+            mensaje = "Sus datos han sido actualizados exitosamente"
 
-            return render_to_response('menu.html')  # Redirect after POST
-    else:
-        userForm = FormularioRegistro(instance=usuario)
-        perfilForm = FormularioRegistroPerfil(instance=perfil)
+            # return render_to_response('menu.html')  # Redirect after POST
+    
+    userForm = FormularioRegistro(instance=usuario)
+    perfilForm = FormularioRegistroPerfil(instance=perfil)
 
     data = {
         'userForm': userForm,
         'perfilForm': perfilForm,
+        'mensaje': mensaje
     }
     return render_to_response('editarPerfil.html', data, context_instance=RequestContext(request))
