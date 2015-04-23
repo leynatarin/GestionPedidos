@@ -3,6 +3,7 @@ from django.conf import settings
 from .views import *
 
 urlpatterns = patterns('',
+    url(r'^$', inicio, name='inicio'),
     url(r'^inicio/$', inicio, name='inicio'),
     url(r'^menu/$', menu, name='menu'),
     url(r'^servicios/$', servicios, name='servicios'),
