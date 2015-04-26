@@ -38,7 +38,7 @@ def registro(request):
             user.save()
             perfil.save()
 
-            return render_to_response('menu.html')  # Redirect after POST
+            return HttpResponseRedirect('/menu')  # Redirect after POST
     else:
         userForm = FormularioRegistro()
         perfilForm = FormularioRegistroPerfil()
