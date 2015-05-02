@@ -2,6 +2,7 @@ from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect
 from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
+from recommends.tasks import recommends_precompute
 from .models import *
 import datetime
 
@@ -67,7 +68,8 @@ def ordenCompra(request):
         orden.total = v_total
         orden.save()
         request.session['carrito_compra'] = {}
-        return render_to_response('confirmacionPedido.html', context_instance=RequestContext(request))
+        recommends_precompute()
+        return HttpResponseRedirect("/confirmacionPedido/")
 
 def confirmacionPedido(request):
     return render_to_response('confirmacionPedido.html', context_instance=RequestContext(request))

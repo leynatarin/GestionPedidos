@@ -65,6 +65,8 @@ RECOMMENDS_TASK_RUN = True
 
 RECOMMENDS_TASK_CRONTAB = {'hour': '*/1'}
 
+RECOMMENDS_CACHE_TEMPLATETAGS_TIMEOUT = 1
+
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 
