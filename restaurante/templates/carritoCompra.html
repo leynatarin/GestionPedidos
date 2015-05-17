@@ -30,7 +30,7 @@
 							<td>{{ value.1.capitalize }}</td>
 							<td>{{ value.2 }}</td>
 							<td>{{ value.3 }}</td>
-							<td><center><button type="button" class="btn btn-danger btn-mini"><i class="icon-remove icon-white"></i> </button></center></td>
+							<td><center><a href="{% url 'eliminarProducto' key %}" type="button" class="btn btn-danger btn-mini"><i class="icon-remove icon-white"></i> </a></center></td>
 						</tr>
 					{% endfor %}
 						<tr>

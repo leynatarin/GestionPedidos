@@ -36,6 +36,13 @@ def agregarProducto(request, id_producto):
 
     return HttpResponseRedirect("/verCategoria/" + str(product.tipo.id))
 
+def eliminarProducto(request, id_producto):
+    if 'carrito_compra' in request.session:
+        carrito = request.session['carrito_compra']
+        del carrito[id_producto]
+        request.session['carrito_compra'] = carrito
+    return HttpResponseRedirect("/carritoCompra/")
+
 def carritoCompra(request):
     if 'carrito_compra' in request.session:
         carrito = request.session['carrito_compra']
