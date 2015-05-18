@@ -23,20 +23,34 @@
 						<th><center>Enviar o Cancelar</center></th>
 					</tr>
 				</thead>
-
 				<tbody>
 					{% for pedido in ordenes %}
 					<tr>
 						<td><center><a href="{% url 'detallePedido' pedido.id %}"> {{ pedido.id }} </a></center> </td>
 						<td>{{ pedido.fecha }}</td>
 						<td><center>{{ pedido.usuario.username }}</center></td>
-						
+						{% if not pedido.revisado %}
 						<td>
 							<center>
-								<button type="button" class="btn btn-success btn-mini"><i class="icon-ok icon-white"></i> </button>
-								<button type="button" class="btn btn-danger btn-mini"><i class="icon-remove icon-white"></i> </button>
+								<!--  -->
+								<a href="{% url 'enviarPedido' pedido.id %}" type="button" class="btn btn-success btn-mini">
+									<i class="icon-ok icon-white"></i>
+								</a>
+								<!-- url 'cancelarPedido' pedido.id -->
+								<a href="#" type="button" class="btn btn-danger btn-mini"><i class="icon-remove icon-white"></i> </a>
 							</center>
 						</td>
+						{% else %}
+						<td>
+							<center>
+								{% if pedido.enviado %}
+									<p>Enviado
+								{% else %}
+									<p>Cancelado
+								{% endif %}
+							</center>
+						</td>
+						{% endif %}
 					</tr>
 					{% endfor %}
 				</tbody>
