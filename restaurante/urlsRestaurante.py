@@ -15,5 +15,6 @@ urlpatterns = patterns('',
     url(r'^confirmacionPedido/$', confirmacionPedido, name='confirmacionPedido'),
     url(r'^listaPedidos/$', listaPedidos, name='listaPedidos'),
     url(r'^detallePedido/(\d+)$', detallePedido, name='detallePedido'),
+    url(r'^enviarPedido/(\d+)$', enviarPedido, name='enviarPedido'),
     url(r'^historialCompra/$', historialCompra, name='historialCompra'),
 )

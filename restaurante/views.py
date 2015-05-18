@@ -1,9 +1,14 @@
-from django.shortcuts import render_to_response
-from django.http import HttpResponseRedirect
-from django.template import RequestContext
-from django.contrib.auth.decorators import login_required
-from recommends.tasks import recommends_precompute
+# -*- coding: utf-8 -*-
 from .models import *
+from django.contrib.auth.decorators import login_required
+from django.core.mail import send_mail
+from django.http import HttpResponseRedirect
+from django.shortcuts import render_to_response
+from django.template import RequestContext
+from django.template.loader import render_to_string
+from django.utils.html import strip_tags
+from recommends.tasks import recommends_precompute
+from registro.models import *
 import datetime
 
 def inicio(request):
@@ -92,3 +97,34 @@ def detallePedido(request, id):
 def historialCompra(request):
     ordenes = OrdenCompra.objects.filter(usuario=request.user)
     return render_to_response('historialCompra.html', {'ordenes': ordenes}, context_instance=RequestContext(request))
+
+def enviarPedido(request, id_pedido):
+    pedido = OrdenCompra.objects.get(id=id_pedido)
+    usuario = pedido.usuario
+    perfil = Perfil.objects.get(user=usuario)
+    
+    email_context = {
+        'usuario': usuario,
+        'perfil': perfil,
+        'pedido': pedido
+    }
+    # se renderiza el template con el context
+    email_html = render_to_string('email_confirmacion.html', email_context)
+
+    # se quitan las etiquetas html para que quede en texto plano
+    email_text = strip_tags(email_html)
+
+    send_mail(
+        'Confirmacion de Pedido',
+        email_text,
+        'maria.juana.tulua@gmail.com',
+        [usuario.email,],
+        html_message=email_html,
+    )
+ 
+    # se actualiza el estado del pedido
+    pedido.revisado = True
+    pedido.enviado = True
+    pedido.save()
+
+    return HttpResponseRedirect('/listaPedidos/')

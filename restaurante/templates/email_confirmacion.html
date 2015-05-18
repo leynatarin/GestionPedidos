@@ -1,0 +1,38 @@
+{% autoescape off %}
+
+<html>
+  <head>
+  	Confirmacion de Pedido
+  </head>
+  <body>
+  	Hola {{ usuario.username }}, <br />
+
+	Hemos recibido tu solicitud y tu pedido va en camino, estos son los datos: <br />
+
+	Número Pedido: {{ pedido.id }} <br />
+
+	Nombres: {{ perfil.nombre }} <br />
+
+	Apellidos: {{ perfil.apellidos }} <br />
+
+	Fecha: {{ pedido.fecha }} <br />
+
+	Dirección: {{ perfil.direccion }} <br />
+
+	Barrio: {{ perfil.barrio }} <br />
+
+	Teléfono: {{ perfil.telefono }} <br />
+
+	Items: {% for producto in pedido.productos.all %} {{ producto.nombre.capitalize }}{% if not forloop.last %}, {% else %}. {% endif %} {% endfor %} <br />
+
+	Total: {{ pedido.total }} <br />
+
+	--
+
+	Gracias por utilizar nuestros servicios! <br />
+
+	El equipo de Maria Juana <br />
+  </body>
+</html>
+
+{% endautoescape %}
