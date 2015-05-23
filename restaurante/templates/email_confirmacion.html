@@ -5,7 +5,7 @@
   	Confirmacion de Pedido
   </head>
   <body>
-  	Hola {{ usuario.username }}, <br />
+  	Hola {{ usuario.first_name }}, <br />
 
 	Hemos recibido tu solicitud y tu pedido va en camino, estos son los datos: <br />
 
@@ -23,11 +23,12 @@
 
 	Teléfono: {{ perfil.telefono }} <br />
 
-	Items: {% for producto in pedido.productos.all %} {{ producto.nombre.capitalize }}{% if not forloop.last %}, {% else %}. {% endif %} {% endfor %} <br />
+	Items: {% for producto in pedido.productos.all %} {{ producto.nombre.capitalize }}{% if not forloop.last %}, {% else %}. {% endif %} {% endfor %}  
+	<br />
 
 	Total: {{ pedido.total }} <br />
 
-	--
+	--  <br />
 
 	Gracias por utilizar nuestros servicios! <br />
 

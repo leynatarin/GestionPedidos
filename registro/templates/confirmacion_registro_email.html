@@ -1,0 +1,21 @@
+{% autoescape off %}
+
+<html>
+  <head>
+  	Confirmacion de Registro
+  </head>
+  <body>
+  	Hola {{ usuario.first_name }}, <br />
+
+	Has quedado registrado en nuestro portal, tu nombre de usuario es: {{ usuario.username }} <br />
+	Puedes acceder a traves del siguiente link: http://52.11.85.167:8000/login  <br />
+
+	--  <br />
+
+	Gracias por utilizar nuestros servicios! <br />
+
+	El equipo de Maria Juana <br />
+  </body>
+</html>
+
+{% endautoescape %}

@@ -1,10 +1,13 @@
 from django.shortcuts import render
+from django.core.mail import send_mail
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 from django.http.response import HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.template.context import RequestContext
 from django.contrib.auth.decorators import login_required
+from django.template.loader import render_to_string
+from django.utils.html import strip_tags
 from registro.models import FormularioRegistro, FormularioRegistroPerfil, Perfil
 
 def registro(request):
@@ -20,7 +23,6 @@ def registro(request):
             first_name = userForm.cleaned_data["first_name"]
             last_name  = userForm.cleaned_data["last_name"]
 
-            avatar    = perfilForm.cleaned_data["avatar"]
             telefono  = perfilForm.cleaned_data["telefono"]
             direccion = perfilForm.cleaned_data["direccion"]
             barrio    = perfilForm.cleaned_data["barrio"]
@@ -32,12 +34,27 @@ def registro(request):
             user.first_name = first_name
             user.last_name = last_name
 
-            perfil = Perfil.objects.create(user=user, avatar=avatar, telefono=telefono, direccion=direccion, barrio=barrio)
+            perfil = Perfil.objects.create(user=user, telefono=telefono, direccion=direccion, barrio=barrio)
 
             # Save new user attributes
             user.save()
             perfil.save()
 
+            email_context = {
+                'usuario': user,
+            }
+            # se renderiza el template con el context
+            email_html = render_to_string('confirmacion_registro_email.html', email_context)
+            # se quitan las etiquetas html para que quede en texto plano
+            email_text = strip_tags(email_html)
+
+            send_mail(
+                'Confirmacion de Registro',
+                email_text,
+                'maria.juana.tulua@gmail.com',
+                [user.email,],
+                html_message=email_html,
+            )
             return HttpResponseRedirect('/menu')  # Redirect after POST
     else:
         userForm = FormularioRegistro()
@@ -68,9 +85,6 @@ def editarPerfil(request):
 
             if not userForm["last_name"].errors:
                 usuario.last_name = userForm.cleaned_data["last_name"]
-
-            if not perfilForm["avatar"].errors:
-                perfil.avatar = perfilForm.cleaned_data["avatar"]
 
             if not perfilForm["telefono"].errors:
                 perfil.telefono = perfilForm.cleaned_data["telefono"]

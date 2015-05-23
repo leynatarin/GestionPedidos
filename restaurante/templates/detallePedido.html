@@ -15,10 +15,10 @@
 		<div class="offset2 span8">
 			<table class="table table-condensed table-bordered">
 				<tr>
-					<td>Nombre del cliente:  {{ ordenCompra.usuario.username }}</td>
+					<td>Nombre del cliente:  {{ ordenCompra.usuario.first_name }}</td>
 				</tr>
 				<tr>
-					<td>Telefono:</td>
+					<td>Telefono: {{ perfil.telefono }}</td>
 				</tr>
 
 				<tr>
@@ -26,7 +26,7 @@
 				</tr>
 
 				<tr>
-					<td>Direccion de pedido:</td>
+					<td>Direccion de pedido: {{ perfil.direccion }} B/{{ perfil.barrio }}</td>
 				</tr>
 			</table>
 		</div>

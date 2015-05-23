@@ -32,12 +32,12 @@
 						{% if not pedido.revisado %}
 						<td>
 							<center>
-								<!--  -->
 								<a href="{% url 'enviarPedido' pedido.id %}" type="button" class="btn btn-success btn-mini">
 									<i class="icon-ok icon-white"></i>
 								</a>
-								<!-- url 'cancelarPedido' pedido.id -->
-								<a href="#" type="button" class="btn btn-danger btn-mini"><i class="icon-remove icon-white"></i> </a>
+								<a href="{% url 'cancelarPedido' pedido.id %}" type="button" class="btn btn-danger btn-mini">
+									<i class="icon-remove icon-white"></i> 
+								</a>
 							</center>
 						</td>
 						{% else %}

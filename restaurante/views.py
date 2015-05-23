@@ -45,7 +45,10 @@ def eliminarProducto(request, id_producto):
     if 'carrito_compra' in request.session:
         carrito = request.session['carrito_compra']
         del carrito[id_producto]
-        request.session['carrito_compra'] = carrito
+        if len(carrito) > 0:
+            request.session['carrito_compra'] = carrito
+        else:
+            del request.session['carrito_compra']
     return HttpResponseRedirect("/carritoCompra/")
 
 def carritoCompra(request):
@@ -62,9 +65,9 @@ def carritoCompra(request):
             value.append(prod.precio)
             value.append(subtotal)
         result = {'title': 'Carrito de Compra', 'total': int(v_total), "carrito": carrito}
+        return render_to_response('carritoCompra.html', result, context_instance=RequestContext(request))
     else:
-        result = {'title': 'Carrito de Compra', 'total': 0, 'impuestos': 0, "carrito": {}}
-    return render_to_response('carritoCompra.html', result, context_instance=RequestContext(request))
+        return HttpResponseRedirect("/carritoCompraVacio/")
 
 def ordenCompra(request):
     if 'carrito_compra' in request.session:
@@ -86,13 +89,17 @@ def ordenCompra(request):
 def confirmacionPedido(request):
     return render_to_response('confirmacionPedido.html', context_instance=RequestContext(request))
 
+def carritoCompraVacio(request):
+    return render_to_response('carritoCompraVacio.html', context_instance=RequestContext(request))
+
 def listaPedidos(request):
     ordenes = OrdenCompra.objects.all()
     return render_to_response('listaPedidos.html', {'ordenes': ordenes}, context_instance=RequestContext(request))
 
 def detallePedido(request, id):
     orden = OrdenCompra.objects.get(id=id)
-    return render_to_response('detallePedido.html', {'ordenCompra': orden}, context_instance=RequestContext(request))
+    perfil = Perfil.objects.get(user=orden.usuario)
+    return render_to_response('detallePedido.html', {'ordenCompra': orden, 'perfil': perfil}, context_instance=RequestContext(request))
 
 def historialCompra(request):
     ordenes = OrdenCompra.objects.filter(usuario=request.user)
@@ -110,7 +117,6 @@ def enviarPedido(request, id_pedido):
     }
     # se renderiza el template con el context
     email_html = render_to_string('email_confirmacion.html', email_context)
-
     # se quitan las etiquetas html para que quede en texto plano
     email_text = strip_tags(email_html)
 
@@ -125,6 +131,34 @@ def enviarPedido(request, id_pedido):
     # se actualiza el estado del pedido
     pedido.revisado = True
     pedido.enviado = True
+    pedido.save()
+
+    return HttpResponseRedirect('/listaPedidos/')
+
+def cancelarPedido(request, id_pedido):
+    pedido = OrdenCompra.objects.get(id=id_pedido)
+    usuario = pedido.usuario
+    
+    email_context = {
+        'usuario': usuario,
+        'pedido': pedido
+    }
+    # se renderiza el template con el context
+    email_html = render_to_string('email_cancelacion.html', email_context)
+    # se quitan las etiquetas html para que quede en texto plano
+    email_text = strip_tags(email_html)
+
+    send_mail(
+        'Cancelación de Pedido',
+        email_text,
+        'maria.juana.tulua@gmail.com',
+        [usuario.email,],
+        html_message=email_html,
+    )
+ 
+    # se actualiza el estado del pedido
+    pedido.revisado = True
+    pedido.enviado = False
     pedido.save()
 
     return HttpResponseRedirect('/listaPedidos/')

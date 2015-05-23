@@ -1,0 +1,15 @@
+{% extends "base_site.html" %}
+{% load staticfiles %}
+
+{% block content_title %}
+	{% include 'content_title.html' %}
+{% endblock %}
+
+{% block content %}
+<section>
+</br>
+	<center>
+		<h3 id="header">Aun no has agregado productos al carrito de compras! Visita nuestro <a href="{% url 'menu' %}">Menu</a></h3></br>
+	</center>
+</section>
+{% endblock %}

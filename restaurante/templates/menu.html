@@ -17,7 +17,9 @@
 			<div class="row-fluid">		
 		{% endif %}
 			<div class="span4 contenedor" id="{{ categoria.enlaceHtml }}">
-			<img class="icon" width="80%" src="{{ categoria.imagen.url }}">
+			<a href="{% url 'verCategoria' categoria.id %}">
+				<img class="icon" width="80%" src="{{ categoria.imagen.url }}">
+			</a>
 			<p class="texto"><a href="{% url 'verCategoria' categoria.id %}">{{ categoria.nombre }}</a></p>
 			</div>
 		{% if forloop.counter|divisibleby:3 or forloop.last %}
@@ -31,7 +33,13 @@
 			</fieldset>
 		</div>
 		{% suggested as suggestions %}
-		{% if suggestions|length > 0 %}
+		{% if user.is_staff %}
+		<div >
+			<fieldset class="well">
+				<h4 >RECOMENDACIONES DESACTIVADAS PARA USUARIO ADMINISTRADOR</h4>
+			</fieldset>
+		</div>
+		{% elif suggestions|length > 0 %}
 		<div class="span3 vticker" id="recomendaciones">
 			<ul>
 				{% for suggested in suggestions %}
